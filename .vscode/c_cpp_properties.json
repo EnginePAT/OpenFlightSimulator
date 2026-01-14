@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/Users/patrick/opt/homebrew/Cellar/glfw/3.4/include/",
+                "/Users/patrick/opt/homebrew/Cellar/glm/1.0.1/include/",
+                "${workspaceFolder}/external/glad/include"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "macos-clang-arm64"
+        }
+    ],
+    "version": 4
+}
