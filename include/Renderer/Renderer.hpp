@@ -28,7 +28,7 @@ public:
 
     Renderer();
 
-    void draw(Mesh& mesh, glm::vec4 color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));         // Color = white
+    void draw(Mesh& mesh, glm::vec4& color);
 };
 
 

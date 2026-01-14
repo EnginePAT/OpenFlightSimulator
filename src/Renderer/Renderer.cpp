@@ -8,12 +8,11 @@ Renderer::Renderer()
     shaderProgram = ShaderLoader::compileShaderProgram(vertexShader, fragmentShader);
 }
 
-void Renderer::draw(Mesh &mesh, glm::vec4 color)
+void Renderer::draw(Mesh &mesh, glm::vec4& color)
 {
     glUseProgram(shaderProgram);
 
-    unsigned int colorLoc = glGetUniformLocation(shaderProgram, "meshColor");
-    glUniform4f(colorLoc, color.x, color.y, color.z, color.w);
+    glUniform4f(glGetUniformLocation(shaderProgram, "meshColor"), color.x, color.y, color.z, color.w);
 
     glBindVertexArray(mesh.VAO);
     glDrawElements(GL_TRIANGLES, mesh.indexCount, GL_UNSIGNED_INT, 0);

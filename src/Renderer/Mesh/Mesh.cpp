@@ -6,14 +6,14 @@ Mesh::Mesh(float verts[], unsigned int vertCount, unsigned int idx[], unsigned i
     vertices.assign(verts, verts + vertCount);
     indices.assign(idx, idx + indexCount);
 
+    this->indexCount = indexCount;
+    this->vertexCount = vertCount;
+
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glGenBuffers(1, &EBO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-
+    
     glBindVertexArray(VAO);
-
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
 

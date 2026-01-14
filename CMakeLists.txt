@@ -20,6 +20,7 @@ add_executable(${PROJECT_NAME}
     src/Renderer/Renderer.cpp
     src/Renderer/ShaderLoader.cpp
     src/Renderer/Mesh/Mesh.cpp
+    src/Renderer/Camera.cpp
 
     external/glad/src/glad.c
 )
