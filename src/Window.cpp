@@ -20,18 +20,25 @@ Window::Window(int width, int height, const char* title)
     }
     glfwMakeContextCurrent(window);
 
+
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cerr << "[ERROR]: Failed to initialize GLAD!" << std::endl;
         return;
     }
     glEnable(GL_DEPTH_TEST);
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+}
+
+void Window::framebuffer_size_callback(GLFWwindow *window, int width, int height)
+{
+    glViewport(0, 0, width, height);
 }
 
 void Window::Clear(glm::vec4 color)
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glClearColor(color.x, color.y, color.z, color.w);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void Window::PollEvents()

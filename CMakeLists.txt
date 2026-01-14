@@ -16,6 +16,11 @@ add_executable(${PROJECT_NAME}
     src/main.cpp
     src/Window.cpp
 
+    # Renderer
+    src/Renderer/Renderer.cpp
+    src/Renderer/ShaderLoader.cpp
+    src/Renderer/Mesh/Mesh.cpp
+
     external/glad/src/glad.c
 )
 
