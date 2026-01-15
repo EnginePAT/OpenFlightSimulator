@@ -22,6 +22,9 @@ public:
     std::vector<float> vertices;
     std::vector<unsigned int> indices;
 
+    unsigned int textureId = 0;
+    bool useTexture = false;
+
     glm::mat4 model;
     glm::vec4 color;
 
@@ -31,6 +34,7 @@ public:
     Mesh();
     void uploadToGpu();
     void setColor(glm::vec4 c);
+    void setTexture(unsigned int texId);
 
 };
 

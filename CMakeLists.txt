@@ -21,7 +21,13 @@ add_executable(${PROJECT_NAME}
     src/Renderer/ShaderLoader.cpp
     src/Renderer/Mesh/Mesh.cpp
     src/Renderer/Camera.cpp
+    src/Renderer/Texture/Texture.cpp
+    src/Renderer/Texture/TextureLoader.cpp
 
+    # Physics engine
+    src/VectorPhysics/Atmosphere.cpp
+
+    # Dependencies
     external/glad/src/glad.c
 )
 

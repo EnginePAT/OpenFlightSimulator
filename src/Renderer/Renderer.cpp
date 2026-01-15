@@ -13,15 +13,29 @@ void Crunch::Renderer::draw(Camera& camera, Mesh &mesh)
 {
     glUseProgram(shaderProgram);
 
-    unsigned int colorLoc = glGetUniformLocation(shaderProgram, "meshColor");
     unsigned int modelLoc = glGetUniformLocation(shaderProgram, "model");
     unsigned int viewLoc = glGetUniformLocation(shaderProgram, "view");
     unsigned int projectionLoc = glGetUniformLocation(shaderProgram, "projection");
 
     glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(mesh.model));
-    glUniform4f(colorLoc, mesh.color.x, mesh.color.y, mesh.color.z, mesh.color.w);
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(camera.view));
     glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(camera.projection));
+
+
+    // Always update useTexture uniform
+    unsigned int shaderBoolLoc = glGetUniformLocation(shaderProgram, "useTexture");
+    glUniform1i(shaderBoolLoc, mesh.useTexture ? 1 : 0);
+
+    
+    if (mesh.useTexture)
+    {
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, mesh.textureId);
+    } else {
+        unsigned int colorLoc = glGetUniformLocation(shaderProgram, "meshColor");
+        glUniform4f(colorLoc, mesh.color.x, mesh.color.y, mesh.color.z, mesh.color.w);
+    }
+
 
     glBindVertexArray(mesh.VAO);
     glDrawElements(GL_TRIANGLES, mesh.indexCount, GL_UNSIGNED_INT, 0);

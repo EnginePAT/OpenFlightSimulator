@@ -15,6 +15,8 @@ Crunch::Mesh::Mesh()
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glGenBuffers(1, &EBO);
+
+    useTexture = false;
 }
 
 void Crunch::Mesh::uploadToGpu()
@@ -26,11 +28,20 @@ void Crunch::Mesh::uploadToGpu()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);      // position
     glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float))); // UV
+    glEnableVertexAttribArray(1);
 }
 
 void Crunch::Mesh::setColor(glm::vec4 c)
 {
     color = c;
+}
+
+void Crunch::Mesh::setTexture(unsigned int texId)
+{
+    textureId = texId;
+    useTexture = true;
 }
