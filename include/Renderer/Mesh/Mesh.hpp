@@ -19,7 +19,15 @@ public:
     std::vector<float> vertices;
     std::vector<unsigned int> indices;
 
-    Mesh(float verts[], unsigned int vertCount, unsigned int indices[], unsigned int indexCount);
+    glm::mat4 model;
+    glm::vec4 color;
+
+    // Mesh contructor properties
+    // float verts[], unsigned int vertCount, unsigned int indices[], unsigned int indexCount
+
+    Mesh();
+    void uploadToGpu();
+    void setColor(glm::vec4 c);
 
 };
 

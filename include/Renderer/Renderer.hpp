@@ -7,6 +7,7 @@
 #include <glm/glm.hpp>
 #include "ShaderLoader.hpp"
 #include "Mesh/Mesh.hpp"
+#include "Camera.hpp"
 
 
 class Renderer : public ShaderLoader
@@ -28,7 +29,7 @@ public:
 
     Renderer();
 
-    void draw(Mesh& mesh, glm::vec4& color);
+    void draw(Camera& camera, Mesh& mesh);
 };
 
 
