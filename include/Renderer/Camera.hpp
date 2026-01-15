@@ -7,6 +7,9 @@
 #include <glm/gtc/type_ptr.hpp>
 
 
+namespace Crunch
+{
+
 class Camera
 {
 public:
@@ -26,6 +29,8 @@ public:
 
     glm::mat4 getViewMatrix() const;
     glm::mat4 getProjectionMatrix() const;
+};
+
 };
 
 

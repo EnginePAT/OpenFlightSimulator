@@ -8,6 +8,9 @@
 #include <glm/gtc/type_ptr.hpp>
 
 
+namespace Crunch
+{
+
 class Shape
 {
 public:
@@ -47,6 +50,8 @@ public:
         mesh.uploadToGpu();
         return mesh;
     }
+};
+
 };
 
 

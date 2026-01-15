@@ -2,7 +2,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 
-Mesh::Mesh()
+Crunch::Mesh::Mesh()
 {
     // vertices.assign(verts, verts + vertCount);
     // indices.assign(idx, idx + indexCount);
@@ -17,7 +17,7 @@ Mesh::Mesh()
     glGenBuffers(1, &EBO);
 }
 
-void Mesh::uploadToGpu()
+void Crunch::Mesh::uploadToGpu()
 {
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -30,7 +30,7 @@ void Mesh::uploadToGpu()
     glEnableVertexAttribArray(0);
 }
 
-void Mesh::setColor(glm::vec4 c)
+void Crunch::Mesh::setColor(glm::vec4 c)
 {
     color = c;
 }

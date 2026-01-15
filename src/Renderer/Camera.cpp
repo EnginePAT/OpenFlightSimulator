@@ -1,9 +1,9 @@
 #include <Renderer/Camera.hpp>
 
 
-Camera::Camera(float fov, float aspect, float nearPlane, float farPlane)
+Crunch::Camera::Camera(float fov, float aspect, float nearPlane, float farPlane)
 {
-    position = glm::vec3(0, 0, 5.0f);
+    position = glm::vec3(3, 3, 15.0f);
     target = glm::vec3(0);
     up = glm::vec3(0, 1.0f, 0);
 

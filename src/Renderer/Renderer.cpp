@@ -2,14 +2,14 @@
 #include <Renderer/Shaders.h>
 #include <glm/gtc/type_ptr.hpp>
 
-Renderer::Renderer()
+Crunch::Renderer::Renderer()
 {
     unsigned int vertexShader = ShaderLoader::compileShader(GL_VERTEX_SHADER, Shaders::vertexShaderSource);
     unsigned int fragmentShader = ShaderLoader::compileShader(GL_FRAGMENT_SHADER, Shaders::fragmentShaderSource);
     shaderProgram = ShaderLoader::compileShaderProgram(vertexShader, fragmentShader);
 }
 
-void Renderer::draw(Camera& camera, Mesh &mesh)
+void Crunch::Renderer::draw(Camera& camera, Mesh &mesh)
 {
     glUseProgram(shaderProgram);
 

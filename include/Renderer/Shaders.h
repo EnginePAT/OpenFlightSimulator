@@ -2,6 +2,9 @@
 #define SHADERS_H
 
 
+namespace Crunch
+{
+
 class Shaders
 {
 public:
@@ -15,7 +18,7 @@ public:
 
         void main()
         {
-            gl_Position = projection * model * view * vec4(aPos, 1.0);
+            gl_Position = projection * view * model * vec4(aPos, 1.0);
         }
     )";
 
@@ -31,6 +34,8 @@ public:
         }
     )";
 };
+
+}
 
 
 #endif      // SHADERS_H

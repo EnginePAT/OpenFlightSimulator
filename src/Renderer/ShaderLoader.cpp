@@ -1,6 +1,6 @@
 #include <Renderer/ShaderLoader.hpp>
 
-unsigned int ShaderLoader::compileShader(GLenum type, const char* source)
+unsigned int Crunch::ShaderLoader::compileShader(GLenum type, const char* source)
 {
     unsigned int shader = glCreateShader(type);
     glShaderSource(shader, 1, &source, NULL);
@@ -9,7 +9,7 @@ unsigned int ShaderLoader::compileShader(GLenum type, const char* source)
     return shader;
 }
 
-unsigned int ShaderLoader::compileShaderProgram(unsigned int vertShader, unsigned int fragShader)
+unsigned int Crunch::ShaderLoader::compileShaderProgram(unsigned int vertShader, unsigned int fragShader)
 {
     unsigned int shaderProgram = glCreateProgram();
     glAttachShader(shaderProgram, vertShader);

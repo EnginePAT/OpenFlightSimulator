@@ -10,6 +10,9 @@
 #include "Camera.hpp"
 
 
+namespace Crunch
+{
+
 class Renderer : public ShaderLoader
 {
 public:
@@ -30,6 +33,8 @@ public:
     Renderer();
 
     void draw(Camera& camera, Mesh& mesh);
+};
+
 };
 
 

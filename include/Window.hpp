@@ -7,6 +7,9 @@
 #include <glm/glm.hpp>
 
 
+namespace Crunch
+{
+
 class Window
 {
 public:
@@ -19,6 +22,8 @@ public:
     void Clear(glm::vec4 color);
     void PollEvents();
     void Terminate();
+};
+
 };
 
 

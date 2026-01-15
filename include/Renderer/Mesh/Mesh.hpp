@@ -8,6 +8,9 @@
 #include <vector>
 
 
+namespace Crunch
+{
+
 class Mesh
 {
 
@@ -28,6 +31,8 @@ public:
     Mesh();
     void uploadToGpu();
     void setColor(glm::vec4 c);
+
+};
 
 };
 
