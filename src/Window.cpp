@@ -27,6 +27,8 @@ Crunch::Window::Window(int width, int height, const char* title)
         return;
     }
     glEnable(GL_DEPTH_TEST);
+    // glEnable(GL_CULL_FACE);
+    // glCullFace(GL_BACK);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 }
 

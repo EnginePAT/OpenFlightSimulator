@@ -35,6 +35,8 @@ public:
     void uploadToGpu();
     void setColor(glm::vec4 c);
     void setTexture(unsigned int texId);
+    void move(glm::vec3 newPos);
+    void setPosition(glm::vec3 newPos);
 
 };
 

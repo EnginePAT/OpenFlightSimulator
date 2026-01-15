@@ -41,22 +41,56 @@ int main() {
     Crunch::Mesh cube = Crunch::Shape::Cube(glm::vec3(0, 1.0f, 0), 1.0f, 1.0f, 1.0f, glm::vec4(1.0f));
     ground.setTexture(groundTexture.id);
     cube.setTexture(cubeTexture.id);
+    cube.setPosition(glm::vec3(0, 5.0f, 0));
 
 
     double rho = VectorPhysics::Atmosphere::getAirDensity(100);         // Whats the air density at 100m above sea level?
     std::cout << rho << std::endl;
 
+    double acceleration = -9.81;                                        // 9.81 m/s^2 (Gravity)
+    double velocity = 0;
+    double currentPos = 5.0;
+    double timeElased;                                                  // How long did it take?
+    double lastTime = glfwGetTime();
+    double dt;
+
 
     while (!glfwWindowShouldClose(window.window))
     {
-        // Clear the window to a blue->green colour
-        window.Clear(glm::vec4(0.2f, 0.3f, 0.3f, 1.0f));
+        /*
+            Update
+        */
+        double currentTime = glfwGetTime();
+        dt = currentTime - lastTime;
+        lastTime = currentTime;
+
+
+        // Calculate the kinematic equation using Euler / Midpoint Integration
+        velocity += acceleration * dt;
+        cube.setPosition(glm::vec3(0, currentPos += velocity * dt, 0));
+
+        // Check if the cube hit the ground
+        if (currentPos <= 0.5)
+        {
+            velocity *= -0.5;                                            // Add a little bounce on impact
+            currentPos = 0.5;
+        }
+        
+
+
+        /*
+            Draw
+        */
+        window.Clear(glm::vec4(0.2f, 0.3f, 0.3f, 1.0f));                // Clear the window to a blue->green colour
 
         // Draw the mesh objects we created
         renderer.draw(camera, ground);
         renderer.draw(camera, cube);
 
-        // PollEvents (Allow window to close) & SwapBuffers
+
+        /*
+            PollEvents & Swap buffers
+        */
         window.PollEvents();
     }
 

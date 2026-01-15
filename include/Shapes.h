@@ -29,25 +29,22 @@ public:
         Mesh mesh;
 
         mesh.vertices = {
-            // x, y, u, v
-            -halfX, -halfY, 0.0f, 0.0f, 0.0f,
-            halfX, -halfY, 0.0f, 1.0f, 0.0f,
-            -halfX, halfY, 0.0f, 0.0f, 1.0f,
-            halfX, halfY, 0.0f, 1.0f, 1.0f
+            // x,      y,      z,     u,    v
+            -halfX, -halfY,  0.0f,  0.0f, 0.0f, // Vertex 0
+            halfX, -halfY,  0.0f,  1.0f, 0.0f, // Vertex 1
+            halfX,  halfY,  0.0f,  1.0f, 1.0f, // Vertex 2
+            -halfX,  halfY,  0.0f,  0.0f, 1.0f  // Vertex 3
         };
         mesh.indices = {
-            0, 1, 3,
-            0, 3, 2
+            0, 1, 2, // Triangle 1 (Bottom Left -> Bottom Right -> Top Right)
+            2, 3, 0  // Triangle 2 (Top Right -> Top Left -> Bottom Left)
         };
 
-        // Set the transform of the mesh, indexCount and vertexCount
-        mesh.model = glm::translate(mesh.model, pos);
-        mesh.indexCount = static_cast<unsigned int>(mesh.indices.size());
-        mesh.vertexCount = static_cast<unsigned int>(mesh.vertices.size());
+        mesh.model = glm::translate(glm::mat4(1.0f), pos);
+        mesh.indexCount = 6;
+        mesh.vertexCount = 4;
 
-        // Set the mesh color
         mesh.setColor(color);
-
         mesh.uploadToGpu();
         return mesh;
     }
