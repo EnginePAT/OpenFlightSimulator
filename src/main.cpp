@@ -32,7 +32,7 @@ int main() {
 
 
     // Create a ground plane object
-    Crunch::Mesh ground = Crunch::Shape::Quad(glm::vec3(0), 10.f, 10.f, glm::vec4(0.65f, 0.33f, 0.0f, 1.0f));
+    Crunch::Mesh ground = Crunch::Shape::Quad(glm::vec3(0), 100.f, 10.f, glm::vec4(0.65f, 0.33f, 0.0f, 1.0f));
     glm::mat4 groundRotation = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0, 0));
     ground.model = groundRotation;
     ground.uploadToGpu();
@@ -45,14 +45,15 @@ int main() {
 
 
     double rho = VectorPhysics::Atmosphere::getAirDensity(100);         // Whats the air density at 100m above sea level?
-    std::cout << rho << std::endl;
+    std::cout << "Air density: " << rho << std::endl;
+
+    double lastTime = glfwGetTime();
+    double dt;
 
     double acceleration = -9.81;                                        // 9.81 m/s^2 (Gravity)
     double velocity = 0;
     double currentPos = 5.0;
     double timeElased;                                                  // How long did it take?
-    double lastTime = glfwGetTime();
-    double dt;
 
 
     while (!glfwWindowShouldClose(window.window))
