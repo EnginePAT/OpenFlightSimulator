@@ -32,7 +32,7 @@ int main() {
 
 
     // Create a ground plane object
-    Crunch::Mesh ground = Crunch::Shape::Quad(glm::vec3(0), 100.f, 10.f, glm::vec4(0.65f, 0.33f, 0.0f, 1.0f));
+    Crunch::Mesh ground = Crunch::Shape::Quad(glm::vec3(0), 10.f, 10.f, glm::vec4(0.65f, 0.33f, 0.0f, 1.0f));
     glm::mat4 groundRotation = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0, 0));
     ground.model = groundRotation;
     ground.uploadToGpu();
