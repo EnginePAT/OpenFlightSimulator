@@ -10,11 +10,16 @@ find_package(glm REQUIRED)
 
 include_directories(include/)
 include_directories(external/)
+include_directories(external/imgui/)
 include_directories(external/glad/include/)
 
 add_executable(${PROJECT_NAME}
     src/main.cpp
+    src/App.cpp
     src/Window.cpp
+
+    # UI
+    src/UI/ui.cpp
 
     # Renderer
     src/Renderer/Renderer.cpp
@@ -29,6 +34,13 @@ add_executable(${PROJECT_NAME}
 
     # Dependencies
     external/glad/src/glad.c
+    external/imgui/imgui.cpp
+    external/imgui/imgui_draw.cpp
+    external/imgui/imgui_widgets.cpp
+    external/imgui/imgui_tables.cpp
+    external/imgui/imgui_demo.cpp
+    external/imgui/backends/imgui_impl_glfw.cpp
+    external/imgui/backends/imgui_impl_opengl3.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
